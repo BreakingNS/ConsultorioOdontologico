@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 18 jul. 2024, 21:15:25
-    Author     : BreakingNS
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

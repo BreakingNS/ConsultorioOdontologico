@@ -1,6 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <body id="page-top">
-
+    
+    <!-- Validación Sesión -->
+    
+    <% HttpSession misession = request.getSession();
+        String usuario = (String) request.getSession().getAttribute("usuario");
+    
+        if(usuario == null){
+            response.sendRedirect("sinLogin.jsp");
+        }
+        
+    %>
+    
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -8,7 +19,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-light fa-tooth"></i>
                 </div>
@@ -44,7 +55,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Acciones:</h6>
                         <a class="collapse-item" href="">Ver Odontólogos</a>
-                        <a class="collapse-item" href="">Alta Odontólogos</a>
+                        <a class="collapse-item" href="altaOdontologo.jsp">Alta Odontólogos</a>
 
                     </div>
                 </div>
@@ -62,7 +73,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Acciones:</h6>
                         <a class="collapse-item" href="">Ver Pacientes</a>
-                        <a class="collapse-item" href="">Alta Pacientes</a>
+                        <a class="collapse-item" href="altaPaciente.jsp">Alta Pacientes</a>
 
                     </div>
                 </div>
@@ -114,7 +125,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=request.getSession().getAttribute("usuario")%></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
