@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import persistencia.ControladoraPersistencia;
 
@@ -48,5 +49,70 @@ public class ControladoraLogica {
         }
         
         return ingreso;
+    }
+
+    public List<Paciente> getPacientes() {
+        return controlPersis.getPacientes();
+    }
+
+    public void borrarPaciente(int id) {
+        controlPersis.borrarPaciente(id);
+    }
+    
+    
+
+    public void crearPaciente(String dni, String nombre, String apellido, 
+            String direccion, String telefono, Date fechanac, Boolean osocial, 
+            String tiposan, int respo) {
+        Paciente pac = new Paciente();
+        pac.setDni(dni);
+        pac.setNombre(nombre);
+        pac.setApellido(apellido);
+        pac.setDireccion(direccion);
+        pac.setTelefono(telefono);
+        pac.setFecha_nac(fechanac);
+        pac.setTiene_OS(osocial);
+        pac.setTipo_sangre(tiposan);
+        
+        List<Responsable> listaResponsable = getResponsables();
+        Responsable responsable = null;
+        
+        for(Responsable rsp : listaResponsable){
+            if(rsp.getId() == respo){
+                responsable = rsp;
+            }
+        }
+        pac.setUnResponsable(responsable);
+        
+        controlPersis.crearPaciente(pac);
+
+    }
+
+    private List<Responsable> getResponsables() {
+        return controlPersis.getResponsables();
+    }
+
+    public Paciente traerPaciente(int id) {
+        return controlPersis.traerPaciente(id);
+    }
+
+    public Responsable traerResponsable(int respoId) {
+        return controlPersis.traerResponsable(respoId);
+    }
+
+    public void editarPaciente(Paciente pac) {
+        controlPersis.editarPaciente(pac);
+    }
+    
+    public List<Usuario> traerUsuarios(){
+        return controlPersis.traerUsuarios();
+    }
+
+    public void crearOdontologo(Odontologo odonto) {
+        controlPersis.crearOdontologo(odonto);
+    }
+
+    public void crearHorario(Horario horario) {
+        controlPersis.crearHorario(horario);
     }
 }

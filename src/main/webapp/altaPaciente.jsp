@@ -4,10 +4,10 @@
 <%@ include file="components/header.jsp"%>
 <%@ include file="components/bodyprimeraparte.jsp"%>
 
-<h1>Alta Usuarios</h1>
-<p>Este es el apartado para dar de alta a los usuarios</p>
+<h1>Alta Pacientes</h1>
+<p>Este es el apartado para dar de alta a los pacientes</p>
 
-    <form class="user" action="SvUsuarios" method="POST">
+    <form class="user" action="SvPacientes" method="POST">
         <div class="form-group col">
             <!-- DNI -->
             <div class="col-sm-6 mb-3">
@@ -43,28 +43,42 @@
             </div>
             <!-- Tiene OS -->
             <label for="aceptar">Tiene Obra Social</label>
+            <input type="checkbox" id="osocial" name="osocial" value="true">
+
+            <input type="hidden" id="hiddenOsocial" name="osocial" value="false">
+
+            <script>
+                document.getElementById('osocial').addEventListener('change', function() {
+                    document.getElementById('hiddenOsocial').disabled = this.checked;
+                });
+            </script>
+
+            <!-- 
+            <label for="aceptar">Tiene Obra Social</label>
             <input type="checkbox" id="osocial" name="osocial" value="no">
-                
+            -->
+            
             <!-- Tipo de Sangre -->
             <br>
             Tipo de Sangre
-            <select id="opciones" name="opciones">
+            <select id="tiposan" name="tiposan">
                 
                 <option value="-">-</option>
-                <option value="a+">A+</option>
-                <option value="a-">A-</option>
-                <option value="b+">B+</option>
-                <option value="b-">B-</option>
-                <option value="ab+">AB+</option>
-                <option value="ab-">AB-</option>
-                <option value="o+">O+</option>
-                <option value="o-">O-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
             </select>
             <!-- UnResponsable -->
             <div class="col-sm-6 mb-3">
-                <input type="text" class="form-control form-control-user" id="responsable" name="responsable"
-                    placeholder="Responsable">
+                <input type="number" class="form-control form-control-user" id="responsable" name="responsable" 
+                       placeholder="Responsable">
             </div>
+
             
             <!-- Acá va a ir todo lo que respecta a horarios y usuarios-->
         </div>

@@ -1,5 +1,6 @@
 logica\Odontologo_.class
 logica\Usuario.class
+servlets\SvElimPacientes.class
 servlets\SvEditUsuarios.class
 logica\Persona.class
 logica\Secretario_.class
@@ -19,13 +20,16 @@ logica\Responsable_.class
 servlets\SvLogin.class
 logica\ControladoraLogica.class
 persistencia\HorarioJpaController.class
+servlets\SvPacientes.class
 logica\Paciente.class
+servlets\SvOdontologo.class
 logica\Horario.class
 logica\Usuario_.class
 logica\Persona_.class
 servlets\SvUsuarios.class
 logica\Secretario.class
 logica\Horario_.class
+servlets\SvEditPacientes.class
 persistencia\PacienteJpaController.class
 persistencia\PersonaJpaController.class
 logica\Responsable.class

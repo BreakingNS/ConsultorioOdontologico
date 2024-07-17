@@ -48,7 +48,7 @@ public class SvUsuarios extends HttpServlet {
         
         String nombreUsuario = request.getParameter("nombreusu");
         String contra = request.getParameter("constrasenia");
-        String rol = request.getParameter("rol");
+        String rol = (String)request.getParameter("rol");
         
         control.crearUsuario(nombreUsuario, contra, rol);
         

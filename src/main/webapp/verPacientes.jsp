@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="logica.Paciente"%>
 <%@page import="logica.Usuario"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,46 +26,82 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Nomber de Usuario</th>
-                                <th>Rol</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>DNI</th>
+                                
+                                <th>Fecha Nacimiento</th>
+                                
+                                <th>Dirección</th>
+                                <th>Telefono</th>
+                                
+                                <th>Tipo Sangre</th>
+                                
+                                <th>Tiene Obra Social</th>
+                                <th>Responsable</th>
                                 <th style="width: 210px">Acción</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Id</th>
-                                <th>Nomber de Usuario</th>
-                                <th>Rol</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>DNI</th>
+                                
+                                <th>Fecha Nacimiento</th>
+                                
+                                <th>Dirección</th>
+                                <th>Telefono</th>
+                                
+                                <th>Tipo Sangre</th>
+                                
+                                <th>Tiene Obra Social</th>
+                                <th>Responsable</th>
                                 <th style="width: 210px">Acción</th>
                             </tr>
                         </tfoot>
                         
                         <%
-                            List<Usuario> listaUsuarios = (List) request.getSession().getAttribute("listaUsuarios");
+                            List<Paciente> listaPacientes = (List) request.getSession().getAttribute("listaPacientes");
+                            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
                         %>
                         
                         <tbody>
-                            <% for (Usuario usu : listaUsuarios){%>
+                            <% 
+                                for (Paciente pac : listaPacientes){
+                                    String fechaFormateada = format.format(pac.getFecha_nac());
+                                    String nombreResponsable = pac.getUnResponsable().getNombre() + " " + pac.getUnResponsable().getApellido();
+                            %>
                             <tr>
-                                <td><%=usu.getId_usuario()%></td>
-                                <td><%=usu.getNombre_usuario()%></td>
-                                <td><%=usu.getRol()%></td>
-                            
+                                <td><%=pac.getId()%></td>
+                                <td><%=pac.getNombre()%></td>
+                                <td><%=pac.getApellido()%></td>
+                                <td><%=pac.getDni()%></td>
+                                
+                                <td><%=fechaFormateada%></td>
+                                
+                                <td><%=pac.getDireccion()%></td>
+                                <td><%=pac.getTelefono()%></td>
+                                
+                                <td><%=pac.getTipo_sangre()%></td>
+                                
+                                <td><%=pac.getTiene_OS()%></td>
+                                <td><%=nombreResponsable%></td>
                                 <td style="display: flex; width: 230px;">
-                                    <form name="eliminar" action="SvElimUsuarios" method="POST"> <!-- esto es para mandar el codigo al servlet -->
+                                    <form name="eliminar" action="SvElimPacientes" method="POST"> <!-- esto es para mandar el codigo al servlet -->
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="background-color:red; margin-right: 5px; "> 
                                             <i class="fa fa-trash-alt"></i> Eliminar
                                         </button>
-                                        <input type="hidden" name="id" value="<%=usu.getId_usuario()%>"> <!-- esto es para mandar el codigo al servlet -->
+                                        <input type="hidden" name="id" value="<%=pac.getId()%>"> <!-- esto es para mandar el codigo al servlet -->
                                     </form>
-                                    <form name="editar" action="SvEditUsuarios" method="GET"> <!-- esto es para mandar el codigo al servlet --> 
+                                    <form name="editar" action="SvEditPacientes" method="GET"> <!-- esto es para mandar el codigo al servlet --> 
                                         <button type="submit" class="btn btn-primary btn-user btn-block"; style="margin-left: 5px;">
                                                 <i class="fa fa-pencil-alt"></i> Editar
                                         </button>
-                                        <input type="hidden" name="id" value="<%=usu.getId_usuario()%>"> <!-- esto es para mandar el codigo al servlet -->
+                                        <input type="hidden" name="id" value="<%=pac.getId()%>"> <!-- esto es para mandar el codigo al servlet -->
                                     </form>
                                 </td>
-                            
                             
                             </tr>
                             <%}%>

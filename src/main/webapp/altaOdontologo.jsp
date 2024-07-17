@@ -1,3 +1,6 @@
+<%@page import="logica.Usuario"%>
+<%@page import="java.util.List"%>
+<%@page import="logica.ControladoraLogica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -7,7 +10,13 @@
 <h1>Alta Odontólogos</h1>
 <p>Hola</p>
 
-    <form class="user">
+    <form class="user" action="SvOdontologo" method="POST">
+        
+        <%
+            ControladoraLogica control = new ControladoraLogica();
+            List<Usuario> listaUsuarios = control.traerUsuarios();
+        %>
+        
         <div class="form-group col">
             <div class="col-sm-6 mb-3">
                 <input type="text" class="form-control form-control-user" id ="dni" name="dni"
@@ -30,17 +39,33 @@
                     placeholder="Dirección">
             </div>
             <div class="col-sm-6 mb-3">
-                <input type="text" class="form-control form-control-user" id ="fechanac" name="fechanac"
-                    placeholder="Fecha Nac">
+                Fecha de Nacimiento
+                <br>
+                <input type="date" class="form-control form-control-user" id="fechanac" name="fechanac"
+                    placeholder="Fecha de Nacimiento">
             </div>
             <div class="col-sm-6 mb-3">
                 <input type="text" class="form-control form-control-user" id ="especialidad" name="especialidad"
                     placeholder="Especialidad">
             </div>
+            
+            Usuarios
+            <select id="usuario" name="usuario">
+                <option value="-">-</option>
+                <%for(Usuario usu : listaUsuarios){
+                    if(usu.getRol().equals("Odontologo/a")){
+                    %> 
+                    <option value="<%=usu.getId_usuario()%>"><%=usu.getNombre_usuario()%></option>
+                    <%
+                    }
+                }
+                %>
+            </select>
+            
             <!-- Acá va a ir todo lo que respecta a horarios y usuarios-->
         </div>
         
-        <button href="#" class="btn btn-primary btn-user btn-block">
+        <button class="btn btn-primary btn-user btn-block" type="submit">
             Crear Odontólogo
         </button>
     </form>
