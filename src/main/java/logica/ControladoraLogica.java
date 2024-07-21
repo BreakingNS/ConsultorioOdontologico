@@ -115,4 +115,8 @@ public class ControladoraLogica {
     public void crearHorario(Horario horario) {
         controlPersis.crearHorario(horario);
     }
+
+    public List<Odontologo> getOdontologos() {
+        return controlPersis.getOdontologos();    
+    }
 }

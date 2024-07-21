@@ -99,4 +99,10 @@ public class ControladoraPersistencia {
     public void crearHorario(Horario horario) {
         horaJPA.create(horario);
     }
+
+    public List<Odontologo> getOdontologos() {
+        return odontoJPA.findOdontologoEntities();
+    }
+
+    
 }

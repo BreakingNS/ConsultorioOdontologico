@@ -16,13 +16,13 @@ persistencia\ControladoraPersistencia.class
 persistencia\exceptions\IllegalOrphanException.class
 persistencia\SecretarioJpaController.class
 logica\Odontologo.class
+servlets\SvElimOdontologos.class
 logica\Responsable_.class
 servlets\SvLogin.class
 logica\ControladoraLogica.class
 persistencia\HorarioJpaController.class
 servlets\SvPacientes.class
 logica\Paciente.class
-servlets\SvOdontologo.class
 logica\Horario.class
 logica\Usuario_.class
 logica\Persona_.class
@@ -30,8 +30,10 @@ servlets\SvUsuarios.class
 logica\Secretario.class
 logica\Horario_.class
 servlets\SvEditPacientes.class
+servlets\SvOdontologos.class
 persistencia\PacienteJpaController.class
 persistencia\PersonaJpaController.class
 logica\Responsable.class
 persistencia\exceptions\NonexistentEntityException.class
 persistencia\TurnoJpaController.class
+servlets\SvEditOdontologos.class
