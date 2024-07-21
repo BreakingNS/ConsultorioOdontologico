@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="logica.Odontologo"%>
 <%@page import="logica.Usuario"%>
 <%@page import="java.util.List"%>
@@ -53,17 +54,21 @@
                         
                         <%
                             List<Odontologo> listaOdontologos = (List) request.getSession().getAttribute("listaOdontologos");
+                            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
                         %>
                         
                         <tbody>
-                            <% for (Odontologo odonto : listaOdontologos){%>
+                            <% for (Odontologo odonto : listaOdontologos){
+                                String fechaFormateada = format.format(odonto.getFecha_nac());
+                            %>
                             <tr>
                                 <td><%=odonto.getId()%></td>
                                 <td><%=odonto.getDni()%></td>
                                 <td><%=odonto.getNombre()%></td>
                                 <td><%=odonto.getApellido()%></td>
                                 <td><%=odonto.getTelefono()%></td>
-                                <td><%=odonto.getFecha_nac()%></td>
+                                <td><%=odonto.getDireccion()%></td>
+                                <td><%=fechaFormateada%></td>
                                 <td><%=odonto.getEspecialidad()%></td>
                                 <td><%=odonto.getUnUsuario().getNombre_usuario()%></td>                              
                                                             
