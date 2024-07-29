@@ -13,16 +13,18 @@ public class Horario implements Serializable {
     private int id_horario; 
     private String horario_inicio; 
     private String horario_fin;
+    private int duracionTurnoMinutos;
 
     public Horario() {
     }
 
-    public Horario(int id_horario, String horario_inicio, String horario_fin) {
+    public Horario(int id_horario, String horario_inicio, String horario_fin, int duracionTurnoMinutos) {
         this.id_horario = id_horario;
         this.horario_inicio = horario_inicio;
         this.horario_fin = horario_fin;
+        this.duracionTurnoMinutos = duracionTurnoMinutos;
     }
-    
+
     public int getId_horario() {
         return id_horario;
     }
@@ -46,6 +48,12 @@ public class Horario implements Serializable {
     public void setHorario_fin(String horario_fin) {
         this.horario_fin = horario_fin;
     }
-    
-    
+
+    public int getDuracionTurnoMinutos() {
+        return duracionTurnoMinutos;
+    }
+
+    public void setDuracionTurnoMinutos(int duracionTurnoMinutos) {
+        this.duracionTurnoMinutos = duracionTurnoMinutos;
+    }
 }

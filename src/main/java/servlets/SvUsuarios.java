@@ -35,8 +35,6 @@ public class SvUsuarios extends HttpServlet {
         HttpSession misession = request.getSession();
         misession.setAttribute("listaUsuarios", listaUsuarios);
         
-        System.out.println("Usuario: " + listaUsuarios.get(0));
-        
         response.sendRedirect("verUsuarios.jsp");
         
         

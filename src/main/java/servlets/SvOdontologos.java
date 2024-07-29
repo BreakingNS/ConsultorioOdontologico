@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.ControladoraLogica;
+import logica.DiaUtil;
 import logica.Horario;
 import logica.Odontologo;
+import logica.ServicioTurnos;
 import logica.Turno;
 import logica.Usuario;
 
@@ -49,14 +51,27 @@ public class SvOdontologos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        List<Turno> listaTurnos = new ArrayList<Turno>();
-        
+
         String dni = (String)request.getParameter("dni");
         String nombre = (String)request.getParameter("nombre");
         String apellido = (String)request.getParameter("apellido");
         String telefono = (String)request.getParameter("telefono");
         String direccion = (String)request.getParameter("direccion");
+        String[] diasSeleccionados = request.getParameterValues("dias");
+        
+        //prueba dias
+        for(String dia : diasSeleccionados){
+            System.out.println(dia);
+        }
+        //
+        
+        String horaIni = (String)request.getParameter("horaIni");
+        String horaFin = (String)request.getParameter("horaFin");
+        int tiempoTurno = Integer.parseInt(request.getParameter("tiempoTurno"));
+        
+        //prueba horas minutos
+        System.out.println("Hora inicio: " + horaIni + "hora fin: " + horaFin + " tiempo turno " + tiempoTurno);
+        //
         
         String fechanacStr = request.getParameter("fechanac");
         Date fechanac = null;
@@ -81,7 +96,26 @@ public class SvOdontologos extends HttpServlet {
         
         Horario horario = new Horario();
         
+        horario.setHorario_inicio(horaIni);
+        horario.setHorario_fin(horaFin);
+        horario.setDuracionTurnoMinutos(tiempoTurno);
+        
         control.crearHorario(horario);
+        
+        ServicioTurnos servTur = new ServicioTurnos(horaIni, horaFin, tiempoTurno);
+        List<Turno> listaTurnos = new ArrayList<Turno>();
+        
+        for(String dia : diasSeleccionados){
+            Date fechaAux = null;
+            try {
+                fechaAux = DiaUtil.convertirDiaSemanaAFecha(dia);
+                //System.out.println(fechaAux);
+            } catch (ParseException ex) {
+                Logger.getLogger(SvOdontologos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            listaTurnos = servTur.generarTurnosParaDia(fechaAux, listaTurnos);
+        }
         
         Odontologo odonto = new Odontologo(especialidad, listaTurnos, 
                 usuario, horario, 0, dni, nombre, apellido, 

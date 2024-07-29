@@ -20,6 +20,7 @@ public class Turno implements Serializable {
     private Date fecha_turno; 
     private String hora_turno;
     private String afeccion;
+    private boolean disponible;
     @ManyToOne
     @JoinColumn(name="id_odonto")
     private Odontologo odonto;
@@ -30,11 +31,14 @@ public class Turno implements Serializable {
     public Turno() {
     }
 
-    public Turno(int id_turno, Date fecha_turno, String hora_turno, String afeccion) {
+    public Turno(int id_turno, Date fecha_turno, String hora_turno, String afeccion, boolean disponible, Odontologo odonto, Paciente pacien) {
         this.id_turno = id_turno;
         this.fecha_turno = fecha_turno;
         this.hora_turno = hora_turno;
         this.afeccion = afeccion;
+        this.disponible = disponible;
+        this.odonto = odonto;
+        this.pacien = pacien;
     }
 
     public int getId_turno() {
@@ -67,5 +71,13 @@ public class Turno implements Serializable {
 
     public void setAfeccion(String afeccion) {
         this.afeccion = afeccion;
+    }
+    
+    public boolean getDisponible(){
+        return disponible;
+    }
+    
+    public void setDisponible(boolean disponible){
+        this.disponible = disponible;
     }
 }

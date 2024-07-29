@@ -41,6 +41,31 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
+                Turnos
+            </div>
+            
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTurnos"
+                    aria-expanded="true" aria-controls="collapseTurnos">
+                    <i class="fas fa-hospital-user"></i>
+                    <span>Turnos</span>
+                </a>
+                <div id="collapseTurnos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Acciones:</h6>
+                        <a class="collapse-item" href="">Ver Turnos</a>
+                        <a class="collapse-item" href="altaTurnosEspe.jsp">Alta Turnos</a>
+
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
                 Gestión
             </div>
 

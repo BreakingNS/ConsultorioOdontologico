@@ -119,4 +119,30 @@ public class ControladoraLogica {
     public List<Odontologo> getOdontologos() {
         return controlPersis.getOdontologos();    
     }
+
+    public void borrarOdontologo(int id) {
+        controlPersis.borrarOdontologo(id);
+    }
+
+    public Odontologo traerOdontologo(int id) {
+        return controlPersis.traerOdontologo(id);
+    }
+
+    public void editarOdontologo(Odontologo odonto) {
+        controlPersis.editarOdontologo(odonto);
+    }
+
+    public List<Odontologo> traerFiltroOdontos(String espe) {
+        
+        List<Odontologo> listaOdontologos = controlPersis.getOdontologos();
+        List<Odontologo> odontoFiltrados= new ArrayList<Odontologo>();
+        
+        for(Odontologo odo : listaOdontologos){
+            if(odo.getEspecialidad().equals(espe)){
+                odontoFiltrados.add(odo);
+            }
+        }
+        
+        return odontoFiltrados;
+    }
 }

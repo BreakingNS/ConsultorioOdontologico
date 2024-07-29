@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import logica.Odontologo;
 import logica.Paciente;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-07-20T18:45:25", comments="EclipseLink-2.7.10.v20211216-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-07-29T20:17:24", comments="EclipseLink-2.7.10.v20211216-rNA")
 @StaticMetamodel(Turno.class)
 public class Turno_ { 
 
@@ -17,5 +17,6 @@ public class Turno_ {
     public static volatile SingularAttribute<Turno, Paciente> pacien;
     public static volatile SingularAttribute<Turno, Date> fecha_turno;
     public static volatile SingularAttribute<Turno, Integer> id_turno;
+    public static volatile SingularAttribute<Turno, Boolean> disponible;
 
 }
