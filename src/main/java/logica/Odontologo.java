@@ -53,19 +53,11 @@ public class Odontologo extends Persona implements Serializable{
     public void setUnHorario(Horario unHorario) {
         this.unHorario = unHorario;
     }
-    /*
-    public int getId_odontologo() {
-        return id_odontologo;
-    }
-    */
+    
     public String getEspecialidad() {
         return especialidad;
     }
-    /*
-    public void setId_odontologo(int id_odontologo) {
-        this.id_odontologo = id_odontologo;
-    }
-    */
+    
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }

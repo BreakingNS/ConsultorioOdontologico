@@ -80,4 +80,26 @@ public class Turno implements Serializable {
     public void setDisponible(boolean disponible){
         this.disponible = disponible;
     }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public Odontologo getOdonto() {
+        return odonto;
+    }
+
+    public Paciente getPacien() {
+        return pacien;
+    }
+
+    public void setOdonto(Odontologo odonto) {
+        this.odonto = odonto;
+    }
+
+    public void setPacien(Paciente pacien) {
+        this.pacien = pacien;
+    }
+    
+    
 }

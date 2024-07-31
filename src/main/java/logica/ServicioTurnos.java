@@ -8,11 +8,13 @@ public class ServicioTurnos {
     private String horaInicio;
     private String horaFin;
     private int duracionTurnoMinutos;
+    private Odontologo odonto;
 
-    public ServicioTurnos(String horaInicio, String horaFin, int duracionTurnoMinutos) {
+    public ServicioTurnos(String horaInicio, String horaFin, int duracionTurnoMinutos, Odontologo odonto) {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.duracionTurnoMinutos = duracionTurnoMinutos;
+        this.odonto = odonto;
     }
      
     private int horaStringToMinutes(String hora){
@@ -30,7 +32,11 @@ public class ServicioTurnos {
             Turno turno = new Turno();
             turno.setFecha_turno(dia);
             turno.setHora_turno(String.format("%02d:%02d", minutos / 60, minutos % 60));
+            turno.setAfeccion(null);
             turno.setDisponible(true);
+            turno.setOdonto(odonto);
+            turno.setPacien(null);
+            
             listaTurnos.add(turno);
         }
 

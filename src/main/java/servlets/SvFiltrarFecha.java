@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.ControladoraLogica;
 import logica.Odontologo;
 import logica.Turno;
@@ -36,7 +37,6 @@ public class SvFiltrarFecha extends HttpServlet {
         Odontologo odonto = control.traerOdontologo(idOdonto);
         
         List<Turno> listaTurnos = odonto.getListaTurnos();
-        
         /*
         for(Turno turno : listaTurnos){
             System.out.println("Fecha " + turno.getFecha_turno() + 
@@ -44,11 +44,11 @@ public class SvFiltrarFecha extends HttpServlet {
                     " Disponible " + turno.getDisponible());
         }
         */
-        /*
-        for(Turno turno : listaTurnos){
-            System.out.println("hora turno " + turno.getHora_turno());
-        }
-        */
+        HttpSession misession = request.getSession();
+        misession.setAttribute("listaTurnos", listaTurnos);
+        
+        response.sendRedirect("altaTurnosFecha.jsp");
+        
     }
 
     @Override

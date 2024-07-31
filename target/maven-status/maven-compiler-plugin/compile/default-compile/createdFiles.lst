@@ -26,6 +26,7 @@ logica\ControladoraLogica.class
 persistencia\HorarioJpaController.class
 servlets\SvPacientes.class
 logica\Paciente.class
+servlets\SvFiltrarHora.class
 logica\Horario.class
 logica\Usuario_.class
 logica\DiaUtil.class

@@ -102,7 +102,11 @@ public class SvOdontologos extends HttpServlet {
         
         control.crearHorario(horario);
         
-        ServicioTurnos servTur = new ServicioTurnos(horaIni, horaFin, tiempoTurno);
+        Odontologo odonto = new Odontologo(especialidad, null, 
+                usuario, horario, 0, dni, nombre, apellido, 
+                direccion, telefono, fechanac);
+        
+        ServicioTurnos servTur = new ServicioTurnos(horaIni, horaFin, tiempoTurno, odonto);
         List<Turno> listaTurnos = new ArrayList<Turno>();
         
         for(String dia : diasSeleccionados){
@@ -117,9 +121,7 @@ public class SvOdontologos extends HttpServlet {
             listaTurnos = servTur.generarTurnosParaDia(fechaAux, listaTurnos);
         }
         
-        Odontologo odonto = new Odontologo(especialidad, listaTurnos, 
-                usuario, horario, 0, dni, nombre, apellido, 
-                direccion, telefono, fechanac);
+        odonto.setListaTurnos(listaTurnos);
         
         control.crearOdontologo(odonto);
         

@@ -30,12 +30,6 @@ public class DiaUtil {
             case "viernes":
                 diaSemanaCalendar = Calendar.FRIDAY;
                 break;
-            case "sabado":
-                diaSemanaCalendar = Calendar.SATURDAY;
-                break;
-            case "domingo":
-                diaSemanaCalendar = Calendar.SUNDAY;
-                break;
             default:
                 throw new IllegalArgumentException("Día de la semana no válido: " + diaSemana);
         }
