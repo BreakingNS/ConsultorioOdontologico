@@ -10,6 +10,7 @@ logica\Paciente_.class
 persistencia\ResponsableJpaController.class
 persistencia\OdontologoJpaController.class
 servlets\SvElimUsuarios.class
+servlets\SvFiltrarPacientes.class
 logica\Turno_.class
 persistencia\exceptions\PreexistingEntityException.class
 persistencia\ControladoraPersistencia.class
@@ -43,3 +44,4 @@ persistencia\exceptions\NonexistentEntityException.class
 persistencia\TurnoJpaController.class
 servlets\SvEditOdontologos.class
 servlets\SvReservarTurnos.class
+servlets\SvFiltrarHora$1.class

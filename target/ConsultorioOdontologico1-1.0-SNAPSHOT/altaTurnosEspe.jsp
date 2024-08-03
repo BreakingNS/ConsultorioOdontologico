@@ -10,11 +10,6 @@
 
 <title>Reserva de Turnos</title>
 
-<%
-    ControladoraLogica control = new ControladoraLogica();
-    List<Paciente> listaPacientes = control.getPacientes();
-%>
-
 <h1>Alta Turnos</h1>
 <p>Este es el apartado para dar de alta los turnos de los pacientes.</p>
 

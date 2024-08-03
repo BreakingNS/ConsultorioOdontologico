@@ -12,8 +12,10 @@
 
 <%
     ControladoraLogica control = new ControladoraLogica();
-    String especialidad = (String)request.getSession().getAttribute("especialidadSelected");
+    //Listas
     List<Odontologo> listaOdontologos = (List<Odontologo>)request.getSession().getAttribute("odontoFiltrados");
+    //Opciones seleccionadas
+    String especialidad = (String)request.getSession().getAttribute("especialidadSelected");
 %>
 
 <h1>Alta Turnos</h1>
@@ -53,3 +55,8 @@
 </form>
         
 <%@ include file="components/bodyfinal.jsp"%>
+
+
+<%
+    //<%=odonto.getId() == odonto.getId() ? "selected" : "" %>
+%>

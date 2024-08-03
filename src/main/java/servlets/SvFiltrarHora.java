@@ -74,15 +74,16 @@ public class SvFiltrarHora extends HttpServlet {
             }
         });
         
+        
+        
         for(Turno turno : listaTurnosFinal){
             
-            System.out.println(turno.getFecha_turno());
+            System.out.println(turno.getHora_turno());
             
         }
-        
-        
-        
-        misession.setAttribute("listaTurnos", listaTurnosFinal);
+
+        misession.setAttribute("listaTurnosDia", listaTurnosFinal);
+        misession.setAttribute("diaSelected", fecha);
         
         response.sendRedirect("altaTurnosHora.jsp");
         

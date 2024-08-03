@@ -17,9 +17,13 @@
 
 <%
     ControladoraLogica control = new ControladoraLogica();
-    String especialidad = (String)request.getSession().getAttribute("especialidadSelected");
+    //Listas
     List<Odontologo> listaOdontologos = (List<Odontologo>)request.getSession().getAttribute("odontoFiltrados");
-    List<Turno> listaTurnos = (List<Turno>)request.getSession().getAttribute("listaTurnos");
+    List<Turno> listaTurnos = (List<Turno>)request.getSession().getAttribute("listaTurnos");    
+    //Opciones seleccionadas
+    String especialidad = (String)request.getSession().getAttribute("especialidadSelected");
+    //String odontologo = (String)request.getSession().getAttribute("odontologoSelected");
+
 %>
 
 <h1>Alta Turnos</h1>

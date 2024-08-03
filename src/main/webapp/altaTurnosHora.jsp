@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="logica.Turno"%>
 <%@page import="logica.Odontologo"%>
 <%@page import="logica.Paciente"%>
@@ -17,9 +18,14 @@
 
 <%
     ControladoraLogica control = new ControladoraLogica();
-    String especialidad = (String)request.getSession().getAttribute("especialidadSelected");
+    //Listas
     List<Odontologo> listaOdontologos = (List<Odontologo>)request.getSession().getAttribute("odontoFiltrados");
     List<Turno> listaTurnos = (List<Turno>)request.getSession().getAttribute("listaTurnos");
+    List<Turno> listaTurnosDia = (List<Turno>)request.getSession().getAttribute("listaTurnosDia");  
+    //Opciones seleccionadas
+    String especialidad = (String)request.getSession().getAttribute("especialidadSelected");
+    //String odontologo = (String)request.getSession().getAttribute("odontologoSelected");
+    //Date fecha = (Date)request.getSession().getAttribute("diaSelected");
 %>
 
 <h1>Alta Turnos</h1>
@@ -86,13 +92,15 @@
     </select>
 </form>
     
+<br>
+    
 <form id="hora" action="SvFiltrarPaciente" method="POST">
     Dia de Atencion
     <select id="horaSelect" name="hora" onchange="document.getElementById('hora').submit();">
         <option value="-">-</option>
         <%
-        if (listaTurnos != null) {
-            for (Turno turno : listaTurnos) {                
+        if (listaTurnosDia != null) {
+            for (Turno turno : listaTurnosDia) {                
                 // Solo agrega la opción si la fecha no está en el Set
                 if(turno.getDisponible() == true){
                     %>

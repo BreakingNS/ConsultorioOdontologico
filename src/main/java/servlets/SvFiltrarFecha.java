@@ -46,6 +46,7 @@ public class SvFiltrarFecha extends HttpServlet {
         */
         HttpSession misession = request.getSession();
         misession.setAttribute("listaTurnos", listaTurnos);
+        misession.setAttribute("odontologoSelected", odonto);
         
         response.sendRedirect("altaTurnosFecha.jsp");
         
