@@ -168,5 +168,16 @@ public class ControladoraLogica {
     return pacienteSelect;
 }
 
+    public void crearTurno(Turno turnoNuevo) {
+        controlPersis.crearTurno(turnoNuevo);
+    }
+
+    public Turno traerTurno(int idHora) {
+        return controlPersis.traerTurno(idHora);
+    }
+
+    public void editarTurno(Turno nuevoTurno) {
+        controlPersis.editarTurno(nuevoTurno);
+    }
 
 }

@@ -128,7 +128,7 @@
     
 <br>
     
-<form id="hora" action="SvFiltrarPaciente" method="POST">
+<form id="hora" action="SvGuardarTurno" method="POST">
     Dia de Atencion
     <select id="horaSelect" name="hora" onchange="document.getElementById('hora').submit();">
         <option value="-">-</option>
