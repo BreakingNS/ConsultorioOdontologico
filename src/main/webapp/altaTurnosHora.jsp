@@ -17,6 +17,16 @@
 <title>Reserva de Turnos</title>
 
 <%
+    Paciente paciente = (Paciente)session.getAttribute("pacienteSelected");
+    
+    String dniPac = (String)session.getAttribute("dniSelected");
+    System.out.println("dnipac " + dniPac);
+    String dni = paciente.getDni();
+    String apellido = paciente.getApellido();
+    String nombre = paciente.getNombre();
+    Date fecha_nac = paciente.getFecha_nac();
+    Boolean tieneOS = paciente.getTiene_OS();
+    
     ControladoraLogica control = new ControladoraLogica();
     //Listas
     List<Odontologo> listaOdontologos = (List<Odontologo>)request.getSession().getAttribute("odontoFiltrados");
@@ -24,12 +34,36 @@
     List<Turno> listaTurnosDia = (List<Turno>)request.getSession().getAttribute("listaTurnosDia");  
     //Opciones seleccionadas
     String especialidad = (String)request.getSession().getAttribute("especialidadSelected");
-    //String odontologo = (String)request.getSession().getAttribute("odontologoSelected");
-    //Date fecha = (Date)request.getSession().getAttribute("diaSelected");
+    Odontologo odontologo = (Odontologo)request.getSession().getAttribute("odontologoSelected");
+    Date fecha = (Date)request.getSession().getAttribute("diaSelected");
 %>
 
 <h1>Alta Turnos</h1>
 <p>Este es el apartado para dar de alta los turnos de los pacientes.</p>
+
+<form class="user" action="SvBuscarPaciente" method="POST">
+    <div class="form-row align-items-center">
+        <div class="col-auto mb-3">
+            <input type="text" class="form-control form-control-user" id="dniPaciente" name="dniPaciente"
+                placeholder="DNI de Paciente" value="<%=dniPac%>">
+        </div>
+        <div class="col-auto mb-3">
+            <button class="btn btn-primary" type="submit">
+                Buscar Paciente
+            </button>
+        </div>
+    </div>
+</form>
+
+<p>DNI: <%=dni%></p>
+<p>Apellido: <%=apellido%></p>
+<p>Nombre: <%=nombre%></p>
+<%
+    SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+    String fechaFormateada1 = sdf1.format(paciente.getFecha_nac());
+%>
+<p>Fecha de Nacimiento: <%=fechaFormateada1%></p>
+<p>Tiene Obra Social: <%= tieneOS.equals(true) ? "Si" : "No" %></p>
 
 <form id="especialidad" action="SvFiltrarOdontologos" method="POST">
     Especialidad
@@ -57,7 +91,7 @@
         <%
         if (listaOdontologos != null) {
             for (Odontologo odonto : listaOdontologos) {%>
-            <option value="<%=odonto.getId()%>"><%=odonto.getApellido()%></option>
+            <option value="<%=odonto.getId()%>"<%=odontologo.getId()==odonto.getId() ? "selected" : "" %>><%=odonto.getApellido()%></option>
             <%}
         }
         %>
@@ -83,7 +117,7 @@
                 // Solo agrega la opción si la fecha no está en el Set
                 if (fechasUnicas.add(fechaFormateada)) {
                     %>
-                    <option value="<%=turno.getFecha_turno()%>"><%=fechaFormateada%></option>
+                    <option value="<%=turno.getFecha_turno()%>"<%=fecha.equals(turno.getFecha_turno()) ? "selected" : "" %>><%=fechaFormateada%></option>
                     <%
                 }
             }

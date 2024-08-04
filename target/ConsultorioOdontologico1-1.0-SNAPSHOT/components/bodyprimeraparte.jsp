@@ -55,7 +55,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Acciones:</h6>
                         <a class="collapse-item" href="">Ver Turnos</a>
-                        <a class="collapse-item" href="altaTurnosEspe.jsp">Alta Turnos</a>
+                        <a class="collapse-item" href="altaTurnosPacien.jsp">Alta Turnos</a>
 
                     </div>
                 </div>

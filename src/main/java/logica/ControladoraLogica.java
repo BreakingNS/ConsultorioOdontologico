@@ -146,4 +146,27 @@ public class ControladoraLogica {
         return odontoFiltrados;
     }
 
+    public Paciente traerPacientePorDni(int dniPacInt) {
+    List<Paciente> listaPacientes = controlPersis.getPacientes();
+    Paciente pacienteSelect = null;
+
+    for (Paciente pac : listaPacientes) {
+        try {
+            // Asegúrate de que pac.getDni() puede ser convertido a int
+            int dniPaciente = Integer.parseInt(pac.getDni());
+            if (dniPaciente == dniPacInt) {
+                //System.out.println("Nombre: " + pac.getNombre());
+                pacienteSelect = pac;
+                break;
+            }
+        } catch (NumberFormatException e) {
+            // Maneja el caso donde el DNI no es un número válido
+            System.err.println("Error al convertir el DNI del paciente: " + pac.getDni());
+        }
+    }
+
+    return pacienteSelect;
+}
+
+
 }

@@ -8,7 +8,7 @@ import logica.Horario;
 import logica.Turno;
 import logica.Usuario;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-07-31T15:39:00", comments="EclipseLink-2.7.10.v20211216-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-08-03T01:17:14", comments="EclipseLink-2.7.10.v20211216-rNA")
 @StaticMetamodel(Odontologo.class)
 public class Odontologo_ extends Persona_ {
 
