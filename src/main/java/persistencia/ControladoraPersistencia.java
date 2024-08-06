@@ -126,7 +126,7 @@ public class ControladoraPersistencia {
     }
 
     public List<Turno> traerTurnos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return turnJPA.findTurnoEntities();
     }
 
     public void crearTurno(Turno turnoNuevo) {
@@ -141,6 +141,14 @@ public class ControladoraPersistencia {
         try {
             turnJPA.edit(nuevoTurno);
         } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void borrarTurno(int id_turno) {
+        try {
+            turnJPA.destroy(id_turno);
+        } catch (NonexistentEntityException ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -57,6 +57,7 @@ public class SvPacientes extends HttpServlet {
         String telefono = (String)request.getParameter("telefono");
         
         String fechanacStr = request.getParameter("fechanac");
+        
         Date fechanac = null;
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");

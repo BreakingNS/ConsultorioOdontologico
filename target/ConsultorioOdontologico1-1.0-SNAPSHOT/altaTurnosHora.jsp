@@ -20,7 +20,6 @@
     Paciente paciente = (Paciente)session.getAttribute("pacienteSelected");
     
     String dniPac = (String)session.getAttribute("dniSelected");
-    System.out.println("dnipac " + dniPac);
     String dni = paciente.getDni();
     String apellido = paciente.getApellido();
     String nombre = paciente.getNombre();
@@ -77,7 +76,6 @@
         <option value="cirugiaoralmaxilar" <%= "cirugiaoralmaxilar".equals(especialidad) ? "selected" : "" %>>Cirugía Oral y Maxilofacial</option>
         <option value="estetica" <%= "estetica".equals(especialidad) ? "selected" : "" %>>Odontología Estética</option>
         <option value="preventiva" <%= "preventiva".equals(especialidad) ? "selected" : "" %>>Odontología Preventiva</option>
-        <%System.out.println(especialidad);%>
     </select>
 </form>
 
@@ -110,6 +108,8 @@
         // Utiliza un Set para almacenar fechas únicas
         Set<String> fechasUnicas = new HashSet<>();
         
+        String fechaFormateadaSelected = sdf.format(fecha);
+        
         if (listaTurnos != null) {
             for (Turno turno : listaTurnos) {
                 String fechaFormateada = sdf.format(turno.getFecha_turno());
@@ -117,7 +117,7 @@
                 // Solo agrega la opción si la fecha no está en el Set
                 if (fechasUnicas.add(fechaFormateada)) {
                     %>
-                    <option value="<%=turno.getFecha_turno()%>"<%=fecha.equals(turno.getFecha_turno()) ? "selected" : "" %>><%=fechaFormateada%></option>
+                    <option value="<%=turno.getFecha_turno()%>"<%=fechaFormateada.equals(fechaFormateadaSelected) ? "selected" : "" %>><%=fechaFormateada%></option>
                     <%
                 }
             }
@@ -128,24 +128,30 @@
     
 <br>
     
-<form id="hora" action="SvGuardarTurno" method="POST">
-    Dia de Atencion
-    <select id="horaSelect" name="hora" onchange="document.getElementById('hora').submit();">
-        <option value="-">-</option>
-        <%
-        if (listaTurnosDia != null) {
-            for (Turno turno : listaTurnosDia) {                
-                // Solo agrega la opción si la fecha no está en el Set
-                if(turno.getDisponible() == true){
-                    %>
-                    <option value="<%=turno.getId_turno()%>"><%=turno.getHora_turno()%></option>
-                    <%
+<form class="hora" action="SvGuardarTurno" method="POST">
+        Dia de Atencion
+        <select id="horaSelect" name="hora" onchange="document.getElementById('hora').submit();">
+            <option value="-">-</option>
+            <%
+            if (listaTurnosDia != null) {
+                for (Turno turno : listaTurnosDia) {                
+                    // Solo agrega la opción si la fecha no está en el Set
+                    if(turno.getDisponible() == true){
+                        %>
+                        <option value="<%=turno.getId_turno()%>"><%=turno.getHora_turno()%></option>
+                        <%
+                    }
                 }
             }
-        }
-        %>
-    </select>
-</form>
+            %>
+        </select>
+        
+        <br>
+        
+        <button class="btn btn-primary btn-user btn-block" type="submit">
+            Crear Turno
+        </button>
+    </form>
 
         
 <%@ include file="components/bodyfinal.jsp"%>

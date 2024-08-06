@@ -20,7 +20,6 @@
     Paciente paciente = (Paciente)session.getAttribute("pacienteSelected");
     
     String dniPac = (String)session.getAttribute("dniSelected");
-    System.out.println("dnipac " + dniPac);
     String dni = paciente.getDni();
     String apellido = paciente.getApellido();
     String nombre = paciente.getNombre();
@@ -75,7 +74,6 @@
         <option value="cirugiaoralmaxilar" <%= "cirugiaoralmaxilar".equals(especialidad) ? "selected" : "" %>>Cirugía Oral y Maxilofacial</option>
         <option value="estetica" <%= "estetica".equals(especialidad) ? "selected" : "" %>>Odontología Estética</option>
         <option value="preventiva" <%= "preventiva".equals(especialidad) ? "selected" : "" %>>Odontología Preventiva</option>
-        <%System.out.println(especialidad);%>
     </select>
 </form>
 

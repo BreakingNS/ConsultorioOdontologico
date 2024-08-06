@@ -14,7 +14,6 @@
     Paciente paciente = (Paciente)session.getAttribute("pacienteSelected");
     
     String dniPac = (String)session.getAttribute("dniSelected");
-    System.out.println("dnipac " + dniPac);
     String dni = paciente.getDni();
     String apellido = paciente.getApellido();
     String nombre = paciente.getNombre();

@@ -180,4 +180,14 @@ public class ControladoraLogica {
         controlPersis.editarTurno(nuevoTurno);
     }
 
+    public void borrarTurnosOdontologo(Odontologo odonto) {
+        List<Turno> listaTurnos = controlPersis.traerTurnos();
+
+        for(Turno turno : listaTurnos){
+            if(turno.getOdonto().getId()==odonto.getId()){
+                controlPersis.borrarTurno(turno.getId_turno());
+            }
+        }
+    }
+
 }

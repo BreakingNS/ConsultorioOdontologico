@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.ControladoraLogica;
+import logica.Odontologo;
 
 @WebServlet(name = "SvElimOdontologos", urlPatterns = {"/SvElimOdontologos"})
 public class SvElimOdontologos extends HttpServlet {
@@ -31,10 +32,12 @@ public class SvElimOdontologos extends HttpServlet {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
+        Odontologo odonto = control.traerOdontologo(id);
+        
+        control.borrarTurnosOdontologo(odonto);
         control.borrarOdontologo(id);
         
         response.sendRedirect("index.jsp");
-        
     }
 
     @Override

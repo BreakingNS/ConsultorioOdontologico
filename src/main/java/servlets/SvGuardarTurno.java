@@ -33,17 +33,6 @@ public class SvGuardarTurno extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("ENTRO AL SERVLET");
-        
-        /*
-        private int id_turno;
-        private Date fecha_turno; -
-        private String hora_turno; - 
-        private String afeccion;
-        private boolean disponible; -
-        private Odontologo odonto;
-        private Paciente pacien;
-        */
         
         String idTurnoHoraString = (String)request.getParameter("hora");
         int idHora = Integer.parseInt(idTurnoHoraString);

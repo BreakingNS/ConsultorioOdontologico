@@ -17,6 +17,7 @@ logica\Paciente.class
 logica\Usuario_.class
 logica\DiaUtil.class
 logica\Persona_.class
+servlets\SvFiltrarHora1$1.class
 logica\Horario_.class
 servlets\SvEditPacientes.class
 persistencia\PacienteJpaController.class
@@ -26,6 +27,7 @@ servlets\SvEditOdontologos.class
 servlets\SvGuardarTurno.class
 servlets\SvReservarTurnos.class
 logica\Odontologo_.class
+servlets\SvFiltrarHora1.class
 servlets\SvEditUsuarios.class
 logica\Persona.class
 logica\Secretario_.class

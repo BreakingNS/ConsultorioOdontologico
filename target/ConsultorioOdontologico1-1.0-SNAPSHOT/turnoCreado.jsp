@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="logica.Turno"%>
 <%@page import="logica.Odontologo"%>
 <%@page import="logica.Paciente"%>
@@ -13,12 +14,12 @@
     Turno turnoNuevo = (Turno)request.getSession().getAttribute("turnoCreado");
 %>
 
-<title>Reserva de Turnos</title>
+<title>Turno Reservado</title>
 
-<h1>Alta Turnos</h1>
-<p>Este es el apartado para dar de alta los turnos de los pacientes.</p>
+<h1>Turno Reservado</h1>
+<p>Su turno se creo de manera exitosa!</p>
 
-<form class="user" action="SvBuscarPaciente" method="POST">
+<form class="user" action="index.jsp" method="POST">
     <div class="form-row align-items-center">
         <div class="col-auto mb-3">
             <p>Paciente </p>
@@ -28,7 +29,11 @@
             <p>ObraSocial: <%=turnoNuevo.getPacien().getTiene_OS()%></p>
             <p>Especialista: <%=turnoNuevo.getOdonto().getEspecialidad()%></p>
             <p>Odontologo: <%=turnoNuevo.getOdonto().getApellido()%> <%=turnoNuevo.getOdonto().getNombre()%></p>
-            <p>Fecha Turno: <%=turnoNuevo.getFecha_turno()%></p>
+            <%
+                SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd-MM-yyyy");
+                String fechaFormateada = sdf.format(turnoNuevo.getFecha_turno());
+            %>
+            <p>Fecha Turno: <%=fechaFormateada%></p>
             <p>Hora Turno: <%=turnoNuevo.getHora_turno()%></p>  
             
             <button class="btn btn-primary" type="submit">

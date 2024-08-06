@@ -33,8 +33,6 @@ public class SvBuscarPaciente extends HttpServlet {
         String dniPac = (String)request.getParameter("dniPaciente");
         int dniPacInt = Integer.parseInt(dniPac);
 
-            System.out.println("DNI " + dniPac);
-
         Paciente paciente = control.traerPacientePorDni(dniPacInt);
 
             //System.out.println("dni " + paciente.getDni());

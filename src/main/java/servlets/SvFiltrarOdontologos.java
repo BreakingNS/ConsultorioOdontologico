@@ -38,10 +38,6 @@ public class SvFiltrarOdontologos extends HttpServlet {
         
         odontoFiltrados = control.traerFiltroOdontos(espe);
         
-        for(Odontologo odo : odontoFiltrados){
-            System.out.println(odo.getApellido());
-        }
-        
         HttpSession misession = request.getSession();
         misession.setAttribute("especialidadSelected", espe);
         misession.setAttribute("odontoFiltrados", odontoFiltrados);
