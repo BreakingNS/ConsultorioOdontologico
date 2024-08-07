@@ -54,7 +54,7 @@
                 <div id="collapseTurnos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Acciones:</h6>
-                        <a class="collapse-item" href="">Ver Turnos</a>
+                        <a class="collapse-item" href="verTurnos.jsp">Ver Turnos</a>
                         <a class="collapse-item" href="altaTurnosPacien.jsp">Alta Turnos</a>
 
                     </div>

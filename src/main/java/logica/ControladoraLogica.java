@@ -189,5 +189,8 @@ public class ControladoraLogica {
             }
         }
     }
-
+    
+    public List<Turno> getTurnos(){
+        return controlPersis.getTurnos();
+    }
 }

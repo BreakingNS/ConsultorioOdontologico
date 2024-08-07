@@ -70,7 +70,15 @@
                                 <td><%=odonto.getDireccion()%></td>
                                 <td><%=fechaFormateada%></td>
                                 <td><%=odonto.getEspecialidad()%></td>
-                                <td><%=odonto.getUnUsuario().getNombre_usuario()%></td>                              
+                                <%
+                                    String nombreUsuario = "NO ASIGNADO"; // Valor predeterminado
+
+                                    if(odonto.getUnUsuario() != null){
+                                        nombreUsuario = odonto.getUnUsuario().getNombre_usuario();
+                                    }
+                                %>
+
+                                <td><%=nombreUsuario%></td>                              
                                                             
                                 <td style="display: flex; width: 230px;">
                                     <form name="eliminar" action="SvElimOdontologos" method="POST"> <!-- esto es para mandar el codigo al servlet -->

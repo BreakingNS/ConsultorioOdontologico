@@ -22,8 +22,13 @@
     ControladoraLogica control = new ControladoraLogica();
     List<Usuario> listaUsuarios = control.traerUsuarios();
     
-    int idUsuario = odonto.getUnUsuario().getId_usuario();
-    Usuario usuEdit = control.traerUsuario(idUsuario);
+    int idUsuario;
+    Usuario usuEdit = null;
+    
+    if(odonto.getUnUsuario() != null){
+        idUsuario = odonto.getUnUsuario().getId_usuario();
+        usuEdit = control.traerUsuario(idUsuario);
+    }
 %>
 
     <form class="user" action="SvEditOdontologos" method="POST">
@@ -61,16 +66,20 @@
             
             Usuarios
             <select id="usuario" name="usuario">
-                <option value="<%=usuEdit.getId_usuario()%>"><%=usuEdit.getNombre_usuario()%></option>
-                <%for(Usuario usu : listaUsuarios){
-                    if(usu.getRol().equals("Odontologo/a")){
-                    %> 
-                    <option value="<%=usu.getId_usuario()%>"><%=usu.getNombre_usuario()%></option>
-                    <%
-                    }
-                }
-                %>
+                <% if (usuEdit != null) { %>
+                    <option value="<%= usuEdit.getId_usuario() %>"><%= usuEdit.getNombre_usuario() %></option>
+                <% }
+                else{ %>
+                    <option value="-">-</option>
+                <%
+                }%>
+                <% for (Usuario usu : listaUsuarios) { 
+                    if (usu.getRol().equals("Odontologo/a")) { %> 
+                    <option value="<%= usu.getId_usuario() %>"><%= usu.getNombre_usuario() %></option>
+                <% } 
+                } %>
             </select>
+
             
             <!-- Acá va a ir todo lo que respecta a horarios y usuarios-->
         </div>

@@ -1,4 +1,6 @@
 <%@page import="logica.Usuario"%>
+<%@page import="logica.ControladoraLogica"%>
+<%@page import="logica.Usuario"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -50,7 +52,7 @@
                                 <td><%=usu.getRol()%></td>
                             
                                 <td style="display: flex; width: 230px;">
-                                    <form name="eliminar" action="SvElimUsuarios" method="POST"> <!-- esto es para mandar el codigo al servlet -->
+                                    <form name="eliminar" action="SvElimUsuarios" method="POST" onsubmit="return confirmarEliminar()"> <!-- esto es para mandar el codigo al servlet -->
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="background-color:red; margin-right: 5px; "> 
                                             <i class="fa fa-trash-alt"></i> Eliminar
                                         </button>
@@ -83,3 +85,15 @@
     <script src="js/demo/datatables-demo.js"></script>
 
 <%@ include file="components/bodyfinal.jsp"%>
+
+<script>
+    function confirmarEliminar(){
+        var esValido = true;
+        
+        if(esValido){
+            return confirm("¿Está seguro que desea eliminar el usuario?");    
+        }
+        
+        return esValido;
+    }
+</script>
