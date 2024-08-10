@@ -17,13 +17,15 @@
                        placeholder="Nombre Usuario" value="<%=usu.getNombre_usuario()%>">
             </div>
             <div class="col-sm-6 mb-3">
-                <input type="password" class="form-control form-control-user" id="constrasenia" name="constrasenia"
+                <input type="password" class="form-control form-control-user" id="constrasenia" name="contrasenia"
                     placeholder="Contraseña" value="<%=usu.getContrasenia()%>">
             </div>
-            <div class="col-sm-6 mb-3">
-                <input type="text" class="form-control form-control-user" id="rol" name="rol"
-                    placeholder="Rol" value="<%=usu.getRol()%>">
-            </div>
+            Rol
+            <select id="rol" name="rol">
+                <option value="-">-</option>
+                <option value="Secretario/a" <%= "Secretario/a".equals(usu.getRol()) ? "selected" : "" %>>Secretario/a</option>
+                <option value="Odontologo/a" <%= "Odontologo/a".equals(usu.getRol()) ? "selected" : "" %>>Odontólogo/a</option>
+            </select>
             
             <!-- Acá va a ir todo lo que respecta a horarios y usuarios-->
         </div>

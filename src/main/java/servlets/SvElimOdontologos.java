@@ -36,6 +36,9 @@ public class SvElimOdontologos extends HttpServlet {
         
         control.borrarTurnosOdontologo(odonto);
         control.borrarOdontologo(id);
+        control.borrarHorario(odonto.getUnHorario().getId_horario());
+        control.borrarUsuario(odonto.getUnUsuario().getId_usuario());
+        
         
         response.sendRedirect("index.jsp");
     }

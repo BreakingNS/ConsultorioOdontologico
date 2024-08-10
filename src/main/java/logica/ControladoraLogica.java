@@ -8,11 +8,12 @@ import persistencia.ControladoraPersistencia;
 public class ControladoraLogica {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
-    public void crearUsuario(String nombreUsuario, String contrasenia, String rol){
+    public void crearUsuario(String nombreUsuario, String contrasenia, String rol, boolean dispo){
         Usuario usu = new Usuario();
         usu.setNombre_usuario(nombreUsuario);
         usu.setContrasenia(contrasenia);
         usu.setRol(rol);
+        usu.setDispo(dispo);
         controlPersis.crearUsuario(usu);
     }
 
@@ -88,7 +89,7 @@ public class ControladoraLogica {
 
     }
 
-    private List<Responsable> getResponsables() {
+    public List<Responsable> getResponsables() {
         return controlPersis.getResponsables();
     }
 
@@ -193,4 +194,42 @@ public class ControladoraLogica {
     public List<Turno> getTurnos(){
         return controlPersis.getTurnos();
     }
+
+    public void borrarHorario(int id_horario) {
+        controlPersis.borrarHorario(id_horario);
+    }
+
+    public void crearResponsable(Responsable respo) {
+        controlPersis.crearResponsable(respo);
+    }
+
+    public void crearSecretario(Secretario secre) {
+        controlPersis.crearSecretario(secre);
+    }
+
+    public List<Secretario> getSecretarios() {
+        return controlPersis.getSecretarios();
+    }
+
+    public void borrarResponsable(int idRespo) {
+        controlPersis.borrarResponsable(idRespo);
+    }
+
+    public void editarResponsable(Responsable respo) {
+        controlPersis.editarResponsable(respo);
+    }
+
+    public void borrarSecretario(int id) {
+        controlPersis.borrarSecretario(id);
+    }
+
+    public Secretario traerSecretario(int id) {
+        return controlPersis.traerSecretario(id);
+    }
+
+    public void editarSecretario(Secretario secre) {
+        controlPersis.editarSecretario(secre);
+    }
+    
+    
 }

@@ -9,7 +9,7 @@
 
 <h1>Alta Odontólogos</h1>
 
-    <form class="user" action="SvOdontologo" method="POST">
+    <form class="user" action="SvOdontologos" method="POST">
         
         <%
             ControladoraLogica control = new ControladoraLogica();
@@ -62,7 +62,7 @@
                 <select id="usuario" name="usuario">
                     <option value="-">-</option>
                     <%for(Usuario usu : listaUsuarios){
-                        if(usu.getRol().equals("Odontologo/a")){
+                        if(usu.getRol().equals("Odontologo/a") && usu.isDispo() != false){
                         %> 
                         <option value="<%=usu.getId_usuario()%>"><%=usu.getNombre_usuario()%></option>
                         <%

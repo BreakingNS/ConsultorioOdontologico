@@ -66,25 +66,8 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Gestión
+                Gestión Paciente
             </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-hospital-user"></i>
-                    <span>Odontólogos</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Acciones:</h6>
-                        <a class="collapse-item" href="SvOdontologo">Ver Odontólogos</a>
-                        <a class="collapse-item" href="altaOdontologo.jsp">Alta Odontólogos</a>
-
-                    </div>
-                </div>
-            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -103,6 +86,74 @@
                     </div>
                 </div>
             </li>
+            
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRespon"
+                    aria-expanded="true" aria-controls="collapseRespon">
+                    <i class="fas fa-solid fa-users"></i>
+                    <span>Responsable</span>
+                </a>
+                <div id="collapseRespon" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Acciones:</h6>
+                        <a class="collapse-item" href="SvResponsables">Ver Responsables</a>
+                        <a class="collapse-item" href="altaResponsables.jsp">Alta Responsables</a>
+
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Gestión Personal
+            </div>
+            
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-hospital-user"></i>
+                    <span>Odontólogos</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Acciones:</h6>
+                        <a class="collapse-item" href="SvOdontologos">Ver Odontólogos</a>
+                        <a class="collapse-item" href="altaOdontologo.jsp">Alta Odontólogos</a>
+
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSecre"
+                    aria-expanded="true" aria-controls="collapseSecre">
+                    <i class="fas fa-hospital-user"></i>
+                    <span>Secretarios</span>
+                </a>
+                <div id="collapseSecre" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Acciones:</h6>
+                        <a class="collapse-item" href="SvSecretarios">Ver Secretarios</a>
+                        <a class="collapse-item" href="altaSecretario.jsp">Alta Secretarios</a>
+
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Gestión Usuario
+            </div>
             
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">

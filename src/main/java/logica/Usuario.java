@@ -14,15 +14,17 @@ public class Usuario implements Serializable {
     private String nombre_usuario; 
     private String contrasenia;
     private String rol;
+    private boolean dispo;
 
     public Usuario() {
     }
 
-    public Usuario(int id_usuario, String nombre_usuario, String contrasenia, String rol) {
+    public Usuario(int id_usuario, String nombre_usuario, String contrasenia, String rol, boolean dispo) {
         this.id_usuario = id_usuario;
         this.nombre_usuario = nombre_usuario;
         this.contrasenia = contrasenia;
         this.rol = rol;
+        this.dispo = dispo;
     }
 
     public String getRol() {
@@ -56,6 +58,12 @@ public class Usuario implements Serializable {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
-    
+
+    public boolean isDispo() {
+        return dispo;
+    }
+
+    public void setDispo(boolean dispo) {
+        this.dispo = dispo;
+    }
 }

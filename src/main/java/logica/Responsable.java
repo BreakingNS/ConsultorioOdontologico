@@ -16,22 +16,12 @@ public class Responsable extends Persona{
         this.tipo_responsabilidad = tipo_responsabilidad;
     }
     
-    /*
-    public int getId_responsable() {
-        return id_responsable;
-    }
-    */
     public String getTipo_responsabilidad() {
         return tipo_responsabilidad;
     }
-    /*
-    public void setId_responsable(int id_responsable) {
-        this.id_responsable = id_responsable;
-    }
-    */
+    
     public void setTipo_responsabilidad(String tipo_responsabilidad) {
         this.tipo_responsabilidad = tipo_responsabilidad;
     }
-    
     
 }

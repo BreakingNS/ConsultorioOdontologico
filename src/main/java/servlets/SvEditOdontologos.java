@@ -47,6 +47,8 @@ public class SvEditOdontologos extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        Odontologo odonto = (Odontologo)request.getSession().getAttribute("odontoEditar");
+        
         String dni = (String)request.getParameter("dni");
         String nombre = (String)request.getParameter("nombre");
         String apellido = (String)request.getParameter("apellido");
@@ -68,12 +70,20 @@ public class SvEditOdontologos extends HttpServlet {
         
         String especialidad = (String)request.getParameter("especialidad");
         
+        //condicion si se modifica el usuario
         String usuarioIdStr = (String) request.getParameter("usuario");
         int idUsuario = Integer.parseInt(usuarioIdStr);
         
         Usuario usuario = control.traerUsuario(idUsuario);
         
-        Odontologo odonto = (Odontologo)request.getSession().getAttribute("odontoEditar");
+        if(!odonto.getUnUsuario().equals(usuario)){
+            Usuario usuarioViejo = odonto.getUnUsuario();
+            usuarioViejo.setDispo(true);
+            control.editarUsuario(usuarioViejo);
+            
+            usuario.setDispo(false);
+            control.editarUsuario(usuario);
+        }
         
         odonto.setDni(dni);
         odonto.setNombre(nombre);

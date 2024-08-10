@@ -23,7 +23,7 @@ import logica.ServicioTurnos;
 import logica.Turno;
 import logica.Usuario;
 
-@WebServlet(name = "SvOdontologo", urlPatterns = {"/SvOdontologo"})
+@WebServlet(name = "SvOdontologos", urlPatterns = {"/SvOdontologos"})
 public class SvOdontologos extends HttpServlet {
 
     ControladoraLogica control = new ControladoraLogica();
@@ -93,6 +93,8 @@ public class SvOdontologos extends HttpServlet {
         int idUsuario = Integer.parseInt(usuarioIdStr);
         
         Usuario usuario = control.traerUsuario(idUsuario);
+        usuario.setDispo(false);
+        control.editarUsuario(usuario);
         
         Horario horario = new Horario();
         

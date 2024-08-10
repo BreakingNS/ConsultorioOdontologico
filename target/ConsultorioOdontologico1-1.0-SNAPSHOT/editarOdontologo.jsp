@@ -63,22 +63,22 @@
                 <input type="text" class="form-control form-control-user" id ="especialidad" name="especialidad"
                     placeholder="Especialidad" value="<%=odonto.getEspecialidad()%>">
             </div>
-            
+                
             Usuarios
             <select id="usuario" name="usuario">
-                <% if (usuEdit != null) { %>
-                    <option value="<%= usuEdit.getId_usuario() %>"><%= usuEdit.getNombre_usuario() %></option>
-                <% }
-                else{ %>
-                    <option value="-">-</option>
-                <%
-                }%>
-                <% for (Usuario usu : listaUsuarios) { 
+                <option value="-" <%= usuEdit == null ? "selected" : "" %>>-</option>
+                <% 
+                for (Usuario usu : listaUsuarios) { 
                     if (usu.getRol().equals("Odontologo/a")) { %> 
-                    <option value="<%= usu.getId_usuario() %>"><%= usu.getNombre_usuario() %></option>
-                <% } 
-                } %>
+                        <option value="<%= usu.getId_usuario() %>"
+                                <%= (usuEdit != null && usu.getId_usuario() == usuEdit.getId_usuario()) ? "selected" : "" %>>
+                            <%= usu.getNombre_usuario() %>
+                        </option>
+                <%  } 
+                }
+                %>
             </select>
+
 
             
             <!-- Acá va a ir todo lo que respecta a horarios y usuarios-->

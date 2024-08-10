@@ -40,7 +40,7 @@ public class SvPacientes extends HttpServlet {
         HttpSession misession = request.getSession();
         misession.setAttribute("listaPacientes", listaPacientes);
         
-        System.out.println("dni :" + listaPacientes.get(0).getDni());
+        //System.out.println("dni :" + listaPacientes.get(0).getDni());
         
         response.sendRedirect("verPacientes.jsp");
         

@@ -21,6 +21,7 @@ D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\persistencia
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvElimPacientes.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvBuscarPaciente.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvOdontologos.java
+D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvSecretario.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\logica\Persona.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvElimUsuarios.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvPacientes.java
@@ -38,3 +39,4 @@ D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\persistencia
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvUsuarios.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvGuardarTurno.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvFiltrarOdontologos.java
+D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvResponsables.java

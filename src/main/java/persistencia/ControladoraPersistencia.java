@@ -8,6 +8,7 @@ import logica.Horario;
 import logica.Odontologo;
 import logica.Paciente;
 import logica.Responsable;
+import logica.Secretario;
 import logica.Turno;
 import logica.Usuario;
 import persistencia.exceptions.NonexistentEntityException;
@@ -156,4 +157,72 @@ public class ControladoraPersistencia {
     public List<Turno> getTurnos() {
         return turnJPA.findTurnoEntities();
     }
+
+    public void borrarHorario(int id_horario) {
+        try {
+            horaJPA.destroy(id_horario);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void crearResponsable(Responsable respo) {
+        respJPA.create(respo);
+    }
+
+    public void crearSecretario(Secretario secre) {
+        secreJPA.create(secre);
+    }
+
+    public List<Secretario> getSecretarios() {
+        return secreJPA.findSecretarioEntities();
+    }
+
+    public void borrarResponsable(int idRespo) {
+        try {
+            respJPA.destroy(idRespo);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void editarResponsable(Responsable respo) {
+        try {
+            respJPA.edit(respo);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void borrarSecretario(int id) {
+        try {
+            secreJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Secretario traerSecretario(int id) {
+        return secreJPA.findSecretario(id);
+    }
+
+    public void editarSecretario(Secretario secre) {
+        try {
+            secreJPA.edit(secre);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
+
+/*
+    HorarioJpaController horaJPA = new HorarioJpaController();
+    OdontologoJpaController odontoJPA = new OdontologoJpaController();
+    PacienteJpaController pacJPA = new PacienteJpaController();
+    PersonaJpaController persJPA = new PersonaJpaController();
+    ResponsableJpaController respJPA = new ResponsableJpaController();
+    SecretarioJpaController secreJPA = new SecretarioJpaController();
+    TurnoJpaController turnJPA = new TurnoJpaController();
+    UsuarioJpaController usuJPA = new UsuarioJpaController();
+*/
