@@ -60,27 +60,83 @@
                        placeholder="Fecha de Nacimiento" value="<%=fechaNacFormateada %>">
             </div>
             <div class="col-sm-6 mb-3">
-                <input type="text" class="form-control form-control-user" id ="especialidad" name="especialidad"
-                    placeholder="Especialidad" value="<%=odonto.getEspecialidad()%>">
+                Especialidad
+                <select id="especialidadSelect" name="especialidad" onchange="document.getElementById('especialidadForm').submit();">
+                    <option value="-">-</option>
+                    <option value="ortodoncia" <%= "ortodoncia".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Ortodoncia</option>
+                    <option value="periodoncia" <%= "periodoncia".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Periodoncia</option>
+                    <option value="endodoncia" <%= "endodoncia".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Endodoncia</option>
+                    <option value="odontopediatria" <%= "odontopediatria".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Odontopediatría</option>
+                    <option value="prostodoncia" <%= "prostodoncia".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Prostodoncia</option>
+                    <option value="cirugiaoralmaxilar" <%= "cirugiaoralmaxilar".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Cirugía Oral y Maxilofacial</option>
+                    <option value="estetica" <%= "estetica".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Odontología Estética</option>
+                    <option value="preventiva" <%= "preventiva".equals(odonto.getEspecialidad()) ? "selected" : "" %>>Odontología Preventiva</option>
+                </select>
+            </div>
+            <div class="col-sm-6 mb-3">
+                Usuarios
+                <select id="usuario" name="usuario">
+                    <option value="-">-</option>
+                    <%for(Usuario usu : listaUsuarios){
+                        if(usu.getRol().equals("Odontologo/a") && usu.isDispo() != false){
+                        %> 
+                        <option value="<%=usu.getId_usuario()%>" <%=usu.getId_usuario() == odonto.getUnUsuario().getId_usuario() ? "selected" : "" %>><%=usu.getNombre_usuario()%></option>
+                        <%
+                        }
+                    }
+                    %>
+                </select>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <!-- Dias Laborales -->
+                Dias de Atención<br><br>
+                <input type="checkbox" id="diaLunes" name="dias" value="Lunes">
+                <label for="aceptar">Lunes</label><br>
+                <input type="checkbox" id="diaMartes" name="dias" value="Martes">
+                <label for="aceptar">Martes</label><br>
+                <input type="checkbox" id="diaMiercoles" name="dias" value="Miercoles">
+                <label for="aceptar">Miercoles</label><br>
+                <input type="checkbox" id="diaJueves" name="dias" value="Jueves">
+                <label for="aceptar">Jueves</label><br>
+                <input type="checkbox" id="diaViernes" name="dias" value="Viernes">
+                <label for="aceptar">Viernes</label><br>
+            </div>
+            <div class="col-sm-6 mb-3">
+                Hora de Entrada
+                <select id="horaIni" name="horaIni">
+                    <option value="-">-</option>
+                    <option value='08:00' <%= "8:00".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>8:00</option>
+                    <option value='08:30' <%= "8:30".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>8:30</option>
+                    <option value='09:00' <%= "9:00".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>9:00</option>
+                    <option value='09:30' <%= "9:30".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>9:30</option>
+                    <option value='10:00' <%= "10:00".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>10:00</option>
+                    <option value='10:30' <%= "10:30".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>10:30</option>
+                    <option value='11:00' <%= "11:00".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>11:00</option>
+                    <option value='11:30' <%= "11:30".equals(odonto.getUnHorario().getHorario_inicio()) ? "selected" : "" %>>11:30</option>
+                </select>
+            </div>
+            <div class="col-sm-6 mb-3">
+                Hora de Salida
+                <select id="horaFin" name="horaFin">
+                    <option value="-">-</option>
+                    <option value='13:00' <%= "13:00".equals(odonto.getUnHorario().getHorario_fin()) ? "selected" : "" %>>13:00</option>
+                    <option value='13:30' <%= "13:30".equals(odonto.getUnHorario().getHorario_fin()) ? "selected" : "" %>>13:30</option>
+                    <option value='14:00' <%= "14:00".equals(odonto.getUnHorario().getHorario_fin()) ? "selected" : "" %>>14:00</option>
+                    <option value='14:30' <%= "14:30".equals(odonto.getUnHorario().getHorario_fin()) ? "selected" : "" %>>14:30</option>
+                    <option value='15:00' <%= "15:00".equals(odonto.getUnHorario().getHorario_fin()) ? "selected" : "" %>>15:00</option>
+                    <option value='15:30' <%= "15:30".equals(odonto.getUnHorario().getHorario_fin()) ? "selected" : "" %>>15:30</option>
+                    <option value='16:00' <%= "16:00".equals(odonto.getUnHorario().getHorario_fin()) ? "selected" : "" %>>16:00</option>
+                </select>
+            </div>
+            <div class="col-sm-6 mb-3">
+                Tiempo de cada Turno
+                <select id="tiempoTurno" name="tiempoTurno">
+                    <option value="-">-</option>
+                    <option value='15' <%= 15 == odonto.getUnHorario().getDuracionTurnoMinutos() ? "selected" : "" %>>15min</option>
+                    <option value='30' <%= 30 == odonto.getUnHorario().getDuracionTurnoMinutos() ? "selected" : "" %>>30min</option>
+                </select>
             </div>
                 
-            Usuarios
-            <select id="usuario" name="usuario">
-                <option value="-" <%= usuEdit == null ? "selected" : "" %>>-</option>
-                <% 
-                for (Usuario usu : listaUsuarios) { 
-                    if (usu.getRol().equals("Odontologo/a")) { %> 
-                        <option value="<%= usu.getId_usuario() %>"
-                                <%= (usuEdit != null && usu.getId_usuario() == usuEdit.getId_usuario()) ? "selected" : "" %>>
-                            <%= usu.getNombre_usuario() %>
-                        </option>
-                <%  } 
-                }
-                %>
-            </select>
-
-
-            
             <!-- Acá va a ir todo lo que respecta a horarios y usuarios-->
         </div>
         

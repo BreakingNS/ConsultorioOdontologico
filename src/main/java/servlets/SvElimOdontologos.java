@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.ControladoraLogica;
 import logica.Odontologo;
+import logica.Usuario;
 
 @WebServlet(name = "SvElimOdontologos", urlPatterns = {"/SvElimOdontologos"})
 public class SvElimOdontologos extends HttpServlet {
@@ -37,8 +38,11 @@ public class SvElimOdontologos extends HttpServlet {
         control.borrarTurnosOdontologo(odonto);
         control.borrarOdontologo(id);
         control.borrarHorario(odonto.getUnHorario().getId_horario());
-        control.borrarUsuario(odonto.getUnUsuario().getId_usuario());
         
+        Usuario usu = odonto.getUnUsuario();
+        usu.setDispo(true);
+        
+        control.editarUsuario(usu);
         
         response.sendRedirect("index.jsp");
     }

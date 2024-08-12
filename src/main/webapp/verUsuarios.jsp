@@ -27,6 +27,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nomber de Usuario</th>
+                                <th>Disponible</th>
                                 <th>Rol</th>
                                 <th style="width: 210px">Acción</th>
                             </tr>
@@ -35,6 +36,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nomber de Usuario</th>
+                                <th>Disponible</th>
                                 <th>Rol</th>
                                 <th style="width: 210px">Acción</th>
                             </tr>
@@ -49,6 +51,8 @@
                             <tr>
                                 <td><%=usu.getId_usuario()%></td>
                                 <td><%=usu.getNombre_usuario()%></td>
+                                
+                                <td><%= usu.isDispo() == true ? "Si" : "No" %></td>
                                 <td><%=usu.getRol()%></td>
                             
                                 <td style="display: flex; width: 230px;">

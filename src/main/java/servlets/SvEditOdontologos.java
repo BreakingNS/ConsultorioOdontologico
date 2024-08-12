@@ -36,6 +36,10 @@ public class SvEditOdontologos extends HttpServlet {
         
         Odontologo odonto = control.traerOdontologo(id);
         
+        Usuario usu = control.traerUsuario(odonto.getUnUsuario().getId_usuario());
+        usu.setDispo(true);
+        control.editarUsuario(usu);
+        
         HttpSession misession = request.getSession();
         misession.setAttribute("odontoEditar", odonto);
         
@@ -85,6 +89,18 @@ public class SvEditOdontologos extends HttpServlet {
             control.editarUsuario(usuario);
         }
         
+        Horario horario = new Horario();
+        
+        String horaIni = (String)request.getParameter("horaIni");
+        String horaFin = (String)request.getParameter("horaFin");
+        int tiempoTurno = Integer.parseInt(request.getParameter("tiempoTurno"));
+        
+        horario.setHorario_inicio(horaIni);
+        horario.setHorario_fin(horaFin);
+        horario.setDuracionTurnoMinutos(tiempoTurno);
+        
+        control.editarHorario(horario);
+        
         odonto.setDni(dni);
         odonto.setNombre(nombre);
         odonto.setApellido(apellido);
@@ -92,6 +108,7 @@ public class SvEditOdontologos extends HttpServlet {
         odonto.setDireccion(direccion);
         odonto.setFecha_nac(fechanac);
         odonto.setEspecialidad(especialidad);
+        odonto.setUnHorario(horario);
         odonto.setUnUsuario(usuario);
         
         control.editarOdontologo(odonto);

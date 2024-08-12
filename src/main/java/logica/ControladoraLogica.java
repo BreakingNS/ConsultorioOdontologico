@@ -230,6 +230,10 @@ public class ControladoraLogica {
     public void editarSecretario(Secretario secre) {
         controlPersis.editarSecretario(secre);
     }
+
+    public void editarHorario(Horario horario) {
+        controlPersis.editarHorario(horario);
+    }
     
     
 }
