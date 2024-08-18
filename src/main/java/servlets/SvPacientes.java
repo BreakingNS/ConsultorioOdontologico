@@ -77,9 +77,26 @@ public class SvPacientes extends HttpServlet {
         
         String tiposan = (String)request.getParameter("tiposan");
         
-        int respo = Integer.parseInt(request.getParameter("responsable"));
+        Integer respo = null;
         
-        control.crearPaciente(dni, nombre, apellido, direccion, telefono, fechanac, osocial, tiposan, respo);
+        if(request.getParameter("responsable")!=null){
+            respo = Integer.valueOf(request.getParameter("responsable"));
+        }
+        
+        if(respo==null){
+            Paciente pac = new Paciente();
+            pac.setDni(dni);
+            pac.setNombre(nombre);
+            pac.setApellido(apellido);
+            pac.setDireccion(direccion);
+            pac.setTelefono(telefono);
+            pac.setFecha_nac(fechanac);
+            pac.setTiene_OS(osocial);
+            pac.setTipo_sangre(tiposan);
+            control.crearPaciente(pac);
+        }else{
+            control.crearPaciente(dni, nombre, apellido, direccion, telefono, fechanac, osocial, tiposan, respo);
+        }
         
         response.sendRedirect("index.jsp");
         

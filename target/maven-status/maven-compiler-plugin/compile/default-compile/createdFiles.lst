@@ -1,7 +1,9 @@
+servlets\SvEditSecretarios.class
 logica\Usuario.class
 servlets\SvElimPacientes.class
 servlets\SvResponsables.class
 logica\Turno.class
+servlets\SvElimSecretarios.class
 logica\Paciente_.class
 persistencia\ResponsableJpaController.class
 persistencia\OdontologoJpaController.class
@@ -12,6 +14,7 @@ persistencia\exceptions\IllegalOrphanException.class
 persistencia\SecretarioJpaController.class
 logica\Odontologo.class
 servlets\SvFiltrarFecha.class
+servlets\SvElimResponsable.class
 logica\ServicioTurnos.class
 servlets\SvLogin.class
 logica\Paciente.class
@@ -21,7 +24,6 @@ logica\Persona_.class
 servlets\SvFiltrarHora1$1.class
 logica\Horario_.class
 servlets\SvEditPacientes.class
-servlets\SvSecretario.class
 persistencia\PacienteJpaController.class
 logica\Responsable.class
 persistencia\exceptions\NonexistentEntityException.class
@@ -43,10 +45,12 @@ logica\ControladoraLogica.class
 persistencia\HorarioJpaController.class
 servlets\SvPacientes.class
 servlets\SvFiltrarHora.class
+servlets\SvSecretarios.class
 logica\Horario.class
 servlets\SvUsuarios.class
 logica\Secretario.class
 servlets\SvOdontologos.class
 persistencia\PersonaJpaController.class
 persistencia\TurnoJpaController.class
+servlets\SvEditResponsable.class
 servlets\SvFiltrarHora$1.class

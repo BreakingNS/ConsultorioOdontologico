@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -14,8 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.ControladoraLogica;
+import logica.DiaUtil;
 import logica.Horario;
 import logica.Odontologo;
+import logica.ServicioTurnos;
+import logica.Turno;
 import logica.Usuario;
 
 @WebServlet(name = "SvEditOdontologos", urlPatterns = {"/SvEditOdontologos"})
@@ -53,11 +58,18 @@ public class SvEditOdontologos extends HttpServlet {
         
         Odontologo odonto = (Odontologo)request.getSession().getAttribute("odontoEditar");
         
+        control.borrarTurnosOdontologo(odonto);
+        
         String dni = (String)request.getParameter("dni");
         String nombre = (String)request.getParameter("nombre");
         String apellido = (String)request.getParameter("apellido");
         String telefono = (String)request.getParameter("telefono");
         String direccion = (String)request.getParameter("direccion");
+        String[] diasSeleccionados = request.getParameterValues("dias");
+        String diasSeleccionadosStr = String.join(",", diasSeleccionados);
+        
+        System.out.println(diasSeleccionadosStr);
+        
         String fechanacStr = request.getParameter("fechanac");
         Date fechanac = null;
         try {
@@ -94,10 +106,11 @@ public class SvEditOdontologos extends HttpServlet {
         String horaIni = (String)request.getParameter("horaIni");
         String horaFin = (String)request.getParameter("horaFin");
         int tiempoTurno = Integer.parseInt(request.getParameter("tiempoTurno"));
-        
+
         horario.setHorario_inicio(horaIni);
         horario.setHorario_fin(horaFin);
         horario.setDuracionTurnoMinutos(tiempoTurno);
+        horario.setDiasAtencion(diasSeleccionadosStr);
         
         control.editarHorario(horario);
         
@@ -110,6 +123,24 @@ public class SvEditOdontologos extends HttpServlet {
         odonto.setEspecialidad(especialidad);
         odonto.setUnHorario(horario);
         odonto.setUnUsuario(usuario);
+        
+        //Creacion de turnos para odontologo
+        ServicioTurnos servTur = new ServicioTurnos(horaIni, horaFin, tiempoTurno, odonto);
+        List<Turno> listaTurnos = new ArrayList<Turno>();
+        
+        for(String dia : diasSeleccionados){
+            Date fechaAux = null;
+            try {
+                fechaAux = DiaUtil.convertirDiaSemanaAFecha(dia);
+                //System.out.println(fechaAux);
+            } catch (ParseException ex) {
+                Logger.getLogger(SvOdontologos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            listaTurnos = servTur.generarTurnosParaDia(fechaAux, listaTurnos);
+        }
+        
+        odonto.setListaTurnos(listaTurnos);
         
         control.editarOdontologo(odonto);
         

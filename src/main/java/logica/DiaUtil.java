@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DiaUtil {
 
@@ -40,4 +41,19 @@ public class DiaUtil {
         // Obtener la fecha correspondiente
         return calendar.getTime();
     }
+    
+    public static String convertirFechaADiaNombre(Date dia) {
+        // Crear un calendario y configurarlo con la fecha proporcionada
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dia);
+
+        // Formateador para obtener solo el nombre del día de la semana
+        SimpleDateFormat formatDia = new SimpleDateFormat("EEEE", new Locale("es", "ES"));
+
+        // Obtener el nombre del día en español
+        String nombreDia = formatDia.format(calendar.getTime());
+
+        return nombreDia;
+    }
+
 }

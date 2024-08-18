@@ -60,7 +60,9 @@ public class ControladoraLogica {
         controlPersis.borrarPaciente(id);
     }
     
-    
+    public void crearPaciente(Paciente pac){
+        controlPersis.crearPaciente(pac);
+    }
 
     public void crearPaciente(String dni, String nombre, String apellido, 
             String direccion, String telefono, Date fechanac, Boolean osocial, 

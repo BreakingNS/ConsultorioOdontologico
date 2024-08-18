@@ -1,6 +1,7 @@
 package logica;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Horario implements Serializable {
     private String horario_inicio; 
     private String horario_fin;
     private int duracionTurnoMinutos;
+    private String diasAtencion;
 
     public Horario() {
     }
@@ -55,5 +57,13 @@ public class Horario implements Serializable {
 
     public void setDuracionTurnoMinutos(int duracionTurnoMinutos) {
         this.duracionTurnoMinutos = duracionTurnoMinutos;
+    }
+
+    public String getDiasAtencion() {
+        return diasAtencion;
+    }
+
+    public void setDiasAtencion(String diasAtencion) {
+        this.diasAtencion = diasAtencion;
     }
 }

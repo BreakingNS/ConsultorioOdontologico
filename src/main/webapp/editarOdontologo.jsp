@@ -1,9 +1,13 @@
+<%@page import="java.nio.charset.StandardCharsets"%>
+<%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
 <%@page import="logica.Usuario"%>
 <%@page import="logica.Odontologo"%>
 <%@page import="logica.ControladoraLogica"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="logica.Paciente"%>
+<%@page import="logica.conversorHexaATexto"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -28,6 +32,22 @@
     if(odonto.getUnUsuario() != null){
         idUsuario = odonto.getUnUsuario().getId_usuario();
         usuEdit = control.traerUsuario(idUsuario);
+    }
+    
+    // Supongamos que diasAtencionStr es la cadena hexadecimal recuperada
+    String diasAtencionStr = odonto.getUnHorario().getDiasAtencion();
+
+    // Convertir la cadena hexadecimal a bytes
+    byte[] bytes = conversorHexaATexto.hexStringToByteArray(diasAtencionStr);
+
+    // Convertir los bytes a la cadena original
+    String decodedString = new String(bytes, StandardCharsets.UTF_8);
+
+    // Convertir la cadena decodificada en una lista
+    List<String> diasAtencion = Arrays.asList(decodedString.split(","));
+
+    for (String dia : diasAtencion) {
+        System.out.println(dia);
     }
 %>
 
@@ -88,19 +108,19 @@
                 </select>
             </div>
             <div class="col-sm-6 mb-3">
-                <!-- Dias Laborales -->
                 Dias de Atención<br><br>
-                <input type="checkbox" id="diaLunes" name="dias" value="Lunes">
-                <label for="aceptar">Lunes</label><br>
-                <input type="checkbox" id="diaMartes" name="dias" value="Martes">
-                <label for="aceptar">Martes</label><br>
-                <input type="checkbox" id="diaMiercoles" name="dias" value="Miercoles">
-                <label for="aceptar">Miercoles</label><br>
-                <input type="checkbox" id="diaJueves" name="dias" value="Jueves">
-                <label for="aceptar">Jueves</label><br>
-                <input type="checkbox" id="diaViernes" name="dias" value="Viernes">
-                <label for="aceptar">Viernes</label><br>
+                <input type="checkbox" id="diaLunes" name="dias" value="Lunes" <%= diasAtencion.contains("Lunes") ? "checked" : "" %>>
+                <label for="diaLunes">Lunes</label><br>
+                <input type="checkbox" id="diaMartes" name="dias" value="Martes" <%= diasAtencion.contains("Martes") ? "checked" : "" %>>
+                <label for="diaMartes">Martes</label><br>
+                <input type="checkbox" id="diaMiercoles" name="dias" value="Miercoles" <%= diasAtencion.contains("Miercoles") ? "checked" : "" %>>
+                <label for="diaMiercoles">Miercoles</label><br>
+                <input type="checkbox" id="diaJueves" name="dias" value="Jueves" <%= diasAtencion.contains("Jueves") ? "checked" : "" %>>
+                <label for="diaJueves">Jueves</label><br>
+                <input type="checkbox" id="diaViernes" name="dias" value="Viernes" <%= diasAtencion.contains("Viernes") ? "checked" : "" %>>
+                <label for="diaViernes">Viernes</label><br>
             </div>
+
             <div class="col-sm-6 mb-3">
                 Hora de Entrada
                 <select id="horaIni" name="horaIni">
