@@ -71,7 +71,11 @@
                             <% 
                                 for (Paciente pac : listaPacientes){
                                     String fechaFormateada = format.format(pac.getFecha_nac());
-                                    String nombreResponsable = pac.getUnResponsable().getNombre() + " " + pac.getUnResponsable().getApellido();
+                                    String nombreResponsable = "";
+                                    if(pac.getUnResponsable() != null && pac.getUnResponsable().getNombre() != null){
+                                        nombreResponsable = pac.getUnResponsable().getNombre() + " " + pac.getUnResponsable().getApellido();
+                                    }
+                                        
                             %>
                             <tr>
                                 <td><%=pac.getId()%></td>

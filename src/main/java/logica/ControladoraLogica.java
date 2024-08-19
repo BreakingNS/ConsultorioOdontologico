@@ -236,6 +236,36 @@ public class ControladoraLogica {
     public void editarHorario(Horario horario) {
         controlPersis.editarHorario(horario);
     }
+
+    public boolean responsableTienePaciente(int idRespo) {
+        List<Paciente> listaPacientes = controlPersis.getPacientes();
+        boolean tienePac = false; 
+        
+        for(Paciente pac : listaPacientes){
+            if(pac.getUnResponsable() != null && pac.getUnResponsable().getApellido() != null){
+                if(pac.getUnResponsable().getId() == idRespo){
+                    tienePac = true;
+                    break;
+                }
+            }
+        }
+        
+        return tienePac;
+    }
+
+    public Paciente traerPacientePorResponsable(int idRespo) {
+        List<Paciente> listaPacientes = controlPersis.getPacientes();
+        Paciente paciente = null;
+        
+        for(Paciente pac : listaPacientes){
+            if(pac.getUnResponsable().getId() == idRespo){
+                paciente = pac;
+                break;
+            }
+        }
+        
+        return paciente;
+    }
     
     
 }

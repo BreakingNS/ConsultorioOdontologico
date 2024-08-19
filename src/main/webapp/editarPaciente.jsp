@@ -90,6 +90,10 @@
             </select>
             <!-- UnResponsable -->
             <div class="col-sm-6 mb-3">
+                <input type="number" class="form-control form-control-user" id="responsable" name="responsable" placeholder="Responsable" disabled>
+            </div>
+            
+            <div class="col-sm-6 mb-3">
                 <input type="number" class="form-control form-control-user" id="responsable" name="responsable" 
                        placeholder="Responsable" value="<%= responsableId %>">
             </div> 
@@ -103,3 +107,31 @@
     </form>
 
 <%@ include file="components/bodyfinal.jsp"%>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        var fechaNac = new Date(document.getElementById('fechanac').value);
+        var hoy = new Date();
+        var edad = hoy.getFullYear() - fechaNac.getFullYear();
+        var mes = hoy.getMonth() - fechaNac.getMonth();
+
+        if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+            edad--;
+        }
+
+        if (edad < 18) {
+            // Si el paciente es menor de edad, habilitar el campo de responsable y validar
+            document.getElementById('responsable').disabled = false;
+            if (document.getElementById('responsable').value.trim() === "") {
+                alert("El paciente es menor de edad, por favor ingrese un responsable.");
+                return; // No enviar el formulario
+            }
+        } else {
+            // Si el paciente es mayor de edad, asegurar que el campo responsable esté deshabilitado
+            document.getElementById('responsable').disabled = true;
+        }
+
+        // Enviar el formulario si todo está correcto
+        document.getElementById('pacienteForm').submit();
+    });
+</script>

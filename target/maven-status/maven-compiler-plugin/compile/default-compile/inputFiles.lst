@@ -39,6 +39,7 @@ D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\persistencia
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\logica\Usuario.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvReservarTurnos.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvEditOdontologos.java
+D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\logica\conversorHexaATexto.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\persistencia\OdontologoJpaController.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvUsuarios.java
 D:\Users\BreakingNS\Documents\ConsultorioOdontologico\src\main\java\servlets\SvGuardarTurno.java

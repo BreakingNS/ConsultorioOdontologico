@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.ControladoraLogica;
+import logica.Paciente;
+import logica.Responsable;
 
 @WebServlet(name = "SvElimResponsable", urlPatterns = {"/SvElimResponsable"})
 public class SvElimResponsable extends HttpServlet {
@@ -30,7 +32,13 @@ public class SvElimResponsable extends HttpServlet {
             throws ServletException, IOException {
         
         int idRespo = Integer.parseInt(request.getParameter("id"));
+        Paciente pacSinRespo = null;
         
+        if(control.responsableTienePaciente(idRespo) == true){
+            pacSinRespo = control.traerPacientePorResponsable(idRespo);
+        }
+        
+        control.editarPaciente(pacSinRespo);
         control.borrarResponsable(idRespo);
         
         response.sendRedirect("index.jsp");

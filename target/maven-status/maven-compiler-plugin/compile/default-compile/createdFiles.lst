@@ -36,6 +36,7 @@ servlets\SvEditUsuarios.class
 logica\Persona.class
 logica\Secretario_.class
 persistencia\UsuarioJpaController.class
+logica\conversorHexaATexto.class
 servlets\SvBuscarPaciente.class
 servlets\SvElimUsuarios.class
 persistencia\ControladoraPersistencia.class
